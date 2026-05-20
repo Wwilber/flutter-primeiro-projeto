@@ -22,12 +22,10 @@ class MediaQueryPage extends StatelessWidget {
         Mediaquery.size.height -
         appBar.preferredSize.height -
         Mediaquery.padding.top;
-
     return Scaffold(
       appBar: appBar,
       body: Center(
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
               color: Colors.red,
