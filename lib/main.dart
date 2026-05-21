@@ -1,3 +1,5 @@
+import 'package:device_preview/device_preview.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_primeiro_projeto/pages/container/container_page.dart';
 import 'package:flutter_primeiro_projeto/pages/home/home_page.dart';
@@ -5,7 +7,12 @@ import 'package:flutter_primeiro_projeto/pages/media_query/media_query_page.dart
 import 'package:flutter_primeiro_projeto/pages/rows_columns/rows_columns_page.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    DevicePreview(
+      enabled: false, //!kReleaseMode,
+      builder: (context) => const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -16,6 +23,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(colorScheme: .fromSeed(seedColor: Colors.deepPurple)),
+      locale: DevicePreview.locale(context),
+      builder: DevicePreview.appBuilder,
       routes: {
         '/': (_) => const HomePage(),
         '/container': (_) => const ContainerPage(),
